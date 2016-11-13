@@ -1,0 +1,204 @@
+[
+    {
+        "type": "set_joint_position",
+        "message0": "déplacer %1 %2 à la position %3 degrés",
+        "args0": [
+            {
+                "type": "field_dropdown",
+                "name": "JOINT",
+                "options": [
+                    [
+                        "base",
+                        "BASE"
+                    ],
+                    [
+                        "épaule",
+                        "SHOULDER"
+                    ],
+                    [
+                        "coude",
+                        "ELBOW"
+                    ],
+                    [
+                        "poignet",
+                        "WRIST"
+                    ],
+                    [
+                        "main",
+                        "HAND"
+                    ]
+                ]
+            },
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_value",
+                "name": "ANGLE",
+                "check": "Number",
+                "align": "RIGHT"
+            }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    },
+    {
+        "type": "move_joint_position",
+        "message0": "déplacer %1 %2 de %3 degrés",
+        "args0": [
+            {
+                "type": "field_dropdown",
+                "name": "JOINT",
+                "options": [
+                    [
+                        "base",
+                        "BASE"
+                    ],
+                    [
+                        "épaule",
+                        "SHOULDER"
+                    ],
+                    [
+                        "coude",
+                        "ELBOW"
+                    ],
+                    [
+                        "poignet",
+                        "WRIST"
+                    ],
+                    [
+                        "main",
+                        "HAND"
+                    ]
+                ]
+            },
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_value",
+                "name": "ANGLE",
+                "check": "Number",
+                "align": "RIGHT"
+            }
+        ],
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    },
+    {
+        "type": "set_pose",
+        "message0": "prendre la pose %1 base %2 épaule %3 coude %4 poignet %5 main %6",
+        "args0": [
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_value",
+                "name": "BASE",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "SHOULDER",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "ELBOW",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "WRIST",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "HAND",
+                "check": "Number",
+                "align": "RIGHT"
+            }
+        ],
+        "inputsInline": false,
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    },
+    {
+        "type": "move_pose",
+        "message0": "modifier la pose %1 base %2 épaule %3 coude %4 poignet %5 main %6",
+        "args0": [
+            {
+                "type": "input_dummy"
+            },
+            {
+                "type": "input_value",
+                "name": "BASE",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "SHOULDER",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "ELBOW",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "WRIST",
+                "check": "Number",
+                "align": "RIGHT"
+            },
+            {
+                "type": "input_value",
+                "name": "HAND",
+                "check": "Number",
+                "align": "RIGHT"
+            }
+        ],
+        "inputsInline": false,
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    },
+    {
+        "type": "open_gripper",
+        "message0": "ouvrir la pince",
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    },
+    {
+        "type": "close_gripper",
+        "message0": "fermer la pince",
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    },
+    {
+        "type": "go_home",
+        "message0": "retour origine",
+        "previousStatement": null,
+        "nextStatement": null,
+        "colour": 65,
+        "data": "youpi"
+    }
+]
