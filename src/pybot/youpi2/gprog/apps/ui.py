@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from pybot.youpi2.http.base import YoupiBottleApp
-from pybot.youpi2.http.__version__ import version
+
+from ..__version__ import version
 
 __author__ = 'Eric Pascual'
 
