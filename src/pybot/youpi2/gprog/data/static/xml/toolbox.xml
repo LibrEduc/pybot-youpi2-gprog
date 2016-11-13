@@ -312,7 +312,49 @@
             <field name="DIRECTION">1</field>
         </block>
     </category>
-    <category name="Youpi" colour="65" id="categ_youpi"></category>
+    <category name="Youpi" colour="65" id="categ_youpi">
+        <block type="set_pose"></block>
+        <block type="move_pose"></block>
+        <block type="set_joint_position">
+            <value name="ANGLE">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="move_joint_position">
+            <value name="ANGLE">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="move_at">
+            <value name="X">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="Y">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="Z">
+                <shadow type="math_number">
+                    <field name="NUM">0</field>
+                </shadow>
+            </value>
+            <value name="PITCH">
+                <shadow type="math_number">
+                    <field name="NUM">90</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="close_gripper"></block>
+        <block type="open_gripper"></block>
+        <block type="go_home"></block>
+    </category>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Fonctions" colour="290" custom="PROCEDURE"></category>
 </xml>
