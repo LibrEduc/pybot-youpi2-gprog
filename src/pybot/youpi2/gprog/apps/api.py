@@ -2,11 +2,12 @@
 
 import httplib
 
-from bottle import HTTPError, HTTPResponse, request, response
+from bottle import HTTPError, request, HTTPResponse
 import bottle
 
 from pybot.youpi2.http.base import YoupiBottleApp
 from pybot.youpi2.http.__version__ import version
+from pybot.youpi2.model import OutOfBoundError
 
 __author__ = 'Eric Pascual'
 
@@ -27,7 +28,7 @@ class RestAPIApp(YoupiBottleApp):
 
     def _http_error(self, status, msg):
         self.log_error(msg)
-        return HTTPError(status, msg)
+        return HTTPError(status=status, body=msg)
 
     def get_version(self):
         return {'version': version}
@@ -48,6 +49,9 @@ class RestAPIApp(YoupiBottleApp):
             exec(py_code, {'arm': self.proxy, 'panel': self.panel})
         except Interrupted:
             self.log_info('sequence aborted')
+        except (ValueError, OutOfBoundError) as e:
+            self.log_error(e)
+            return HTTPResponse(status=httplib.BAD_REQUEST, body=e.message)
         except Exception as e:
             return self._http_error(httplib.INTERNAL_SERVER_ERROR, e.message)
         else:
@@ -62,7 +66,7 @@ class RestAPIApp(YoupiBottleApp):
 
 
 class ArmProxy(object):
-    PROXIED_METHODS = ('move', 'goto', 'open_gripper', 'close_gripper', 'go_home')
+    PROXIED_METHODS = ('move', 'goto', 'open_gripper', 'close_gripper', 'go_home', 'move_gripper_at')
 
     def __init__(self, arm, logger):
         self.arm = arm
