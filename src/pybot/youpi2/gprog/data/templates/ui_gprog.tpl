@@ -22,7 +22,6 @@
 
 <div class="row text-center">
     <button id="btn_execute" class="btn btn-command btn-default disabled">Exécuter</button>
-    <button id="btn_stop" class="btn btn-command btn-default disabled">STOP</button>
     <button id="btn_clear" class="btn btn-command btn-default disabled">Effacer</button>
 </div>
 
@@ -42,6 +41,13 @@
         var btn_stop = $('#btn_stop');
         var btn_clear = $('#btn_clear');
 
+        var runningModal = $('#sequence_running_dlg');
+        runningModal.modal();
+
+        $('#sequence-abort').click(function () {
+            window.alert('sequence abort requested');
+        });
+
         function btn_execute_enabled(enabled) {
             if (enabled) {
                 btn_execute
@@ -52,20 +58,6 @@
                 btn_execute
                         .addClass('disabled btn-default')
                         .removeClass('btn-success')
-                        .attr('disabled', 'disabled');
-            }
-        }
-
-        function btn_stop_enabled(enabled) {
-            if (enabled) {
-                btn_stop
-                        .removeClass('disabled btn-default')
-                        .addClass('btn-danger')
-                        .removeAttr('disabled');
-            } else {
-                btn_stop
-                        .addClass('disabled btn-default')
-                        .removeClass('btn-danger')
                         .attr('disabled', 'disabled');
             }
         }
@@ -108,9 +100,8 @@
                 method: 'POST',
                 data: code,
                 beforeSend: function () {
-                    pleaseWait.modal('show');
+                    runningModal.modal('show');
                     btn_execute_enabled(false);
-                    btn_stop_enabled(true);
                     btn_clear_enabled(false);
                 }
             }).fail(function (jqXHR, textStatus, errorThrown) {
@@ -119,13 +110,12 @@
                 } else {
                     error_message("Erreur imprévue : " + jqXHR.responseText);
                 }
-                pleaseWait.modal('hide');
+                runningModal.modal('hide');
 
             }).always(function () {
                 btn_execute_enabled(true);
-                btn_stop_enabled(false);
                 btn_clear_enabled(true);
-                pleaseWait.modal('hide');
+                runningModal.modal('hide');
             });
         });
 
@@ -140,4 +130,25 @@
     });
 </script>
 
+    <div class="modal fade" id="sequence_running_dlg" tabindex="-1" role="dialog"
+         data-backdrop="static" data-keyboard="false" data-show="false">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Exécution en cours...</h2>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active"
+                             role="progressbar"
+                             style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="sequence-abort" type="button" class="btn btn-danger">STOP</button>
+                </div>
+            </div>
+        </div>
+    </div>
 % include("epilog.tpl", version=version, ui_app=True)
