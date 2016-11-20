@@ -11,9 +11,10 @@ class UIApp(YoupiBottleApp):
     def __init__(self, *args, **kwargs):
         super(UIApp, self).__init__(*args, **kwargs)
 
-        self.route('/', callback=self.ui_gprog)
-        self.route('/gprog', callback=self.ui_gprog)
-        self.route('/help', callback=self.ui_help)
+        self.route('/', callback=self.gprog)
+        self.route('/gprog', callback=self.gprog)
+        self.route('/help', callback=self.help)
+        self.route('/about', callback=self.about)
 
     def get_context(self, **kwargs):
         context = {
@@ -23,8 +24,11 @@ class UIApp(YoupiBottleApp):
         context.update(kwargs)
         return context
 
-    def ui_gprog(self):
+    def gprog(self):
         return self.render_template('gprog')
 
-    def ui_help(self):
+    def help(self):
         return self.render_template('help')
+
+    def about(self):
+        return self.render_template('about')
