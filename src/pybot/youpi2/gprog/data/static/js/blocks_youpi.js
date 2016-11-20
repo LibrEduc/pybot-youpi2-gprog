@@ -23,7 +23,7 @@ function initialize_block(block, title, help_topic, tooltip) {
     if (help_topic)
         block.setHelpUrl("/help#" + help_topic);
     if (tooltip)
-        block.setToolTip(tooltip);
+        block.setTooltip(tooltip);
     block.data = 'youpi';
 }
 
