@@ -24,7 +24,7 @@ class UIApp(YoupiBottleApp):
         return context
 
     def ui_gprog(self):
-        return self.render_template('ui_gprog')
+        return self.render_template('gprog')
 
     def ui_help(self):
-        return self.render_template('ui_help')
+        return self.render_template('help')
