@@ -22,6 +22,8 @@ class RestAPIApp(YoupiBottleApp):
     SAVED_WORKSPACE_FILE = 'workspace.xml'
     STORAGE_PATH = "/var/lib/youpi2-gprog"
 
+    app_title = ''
+
     def __init__(self, *args, **kwargs):
         super(RestAPIApp, self).__init__(*args, **kwargs)
 
@@ -38,6 +40,7 @@ class RestAPIApp(YoupiBottleApp):
         self.route('/status', 'GET', callback=self.get_status)
         self.route('/workspace', 'GET', callback=self.get_workspace)
         self.route('/workspace', 'POST', callback=self.post_workspace)
+        self.route('/pnlreset', 'POST', callback=self.reset_panel)
 
     def _http_error(self, status, msg):
         self.log_error(msg)
@@ -103,6 +106,12 @@ class RestAPIApp(YoupiBottleApp):
         if wksp_xml:
             with open(self._wksp_save_path, "w") as fp:
                 fp.write(wksp_xml)
+
+    def reset_panel(self):
+        self.panel.clear()
+        self.panel.center_text_at(self.app_title, 1)
+        self.panel.center_text_at('Ready', 3)
+        self.panel.leds_off()
 
 
 class ArmProxy(object):

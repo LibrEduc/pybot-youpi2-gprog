@@ -21,6 +21,7 @@ $(function () {
 
     $('#completion_ok').click(function () {
         $completion_modal.modal('hide');
+        $.post("/api/v1/pnlreset");
     });
 
 

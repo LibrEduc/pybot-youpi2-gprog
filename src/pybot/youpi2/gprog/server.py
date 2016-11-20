@@ -22,6 +22,7 @@ class GProgServerApp(HTTPServerApp):
     def get_apps(self):
         ui_app = UIApp(arm=self.arm, panel=self.pnl, name='app-ui', log_level=self.log_getEffectiveLevel())
         api_app = RestAPIApp(arm=self.arm, panel=self.pnl, name='app-api', log_level=self.log_getEffectiveLevel())
+        api_app.app_title = self.TITLE
 
         return ui_app, api_app
 
