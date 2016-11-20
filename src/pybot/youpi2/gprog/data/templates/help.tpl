@@ -1,4 +1,4 @@
-%include("ui_prolog.tpl", title="Youpi 2 - Programmation")
+% rebase("base.tpl", title="Youpi 2 - Programmation graphique", version=version)
 
 <div class="page-header"><h1>Programmation du bras</h1></div>
 
@@ -47,4 +47,3 @@
 %include("jump_to_top")
 
 %include("toc_epilog.tpl")
-%include("epilog.tpl", version=version)

@@ -354,6 +354,59 @@
         <block type="close_gripper"></block>
         <block type="open_gripper"></block>
         <block type="go_home"></block>
+        <block type="pnl_write_at">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+            <value name="LINE">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+            <value name="COL">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="pnl_center_text">
+            <value name="TEXT">
+                <shadow type="text">
+                    <field name="TEXT"></field>
+                </shadow>
+            </value>
+            <value name="LINE">
+                <shadow type="math_number">
+                    <field name="NUM">1</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="pnl_clear"></block>
+        <block type="leds_on">
+            <value name="LED1">
+                <shadow type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                </shadow>
+            </value>
+            <value name="LED2">
+                <shadow type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                </shadow>
+            </value>
+            <value name="LED3">
+                <shadow type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                </shadow>
+            </value>
+            <value name="LED4">
+                <shadow type="logic_boolean">
+                    <field name="BOOL">FALSE</field>
+                </shadow>
+            </value>
+        </block>
+        <block type="leds_all_off"></block>
     </category>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Fonctions" colour="290" custom="PROCEDURE"></category>

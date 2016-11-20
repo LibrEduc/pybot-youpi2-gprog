@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from pybot.youpi2.http.webapp import HTTPServerApp
+from pybot.youpi2.http.base import HTTPServerApp
 
 from .__version__ import version
 from .apps.api import RestAPIApp
@@ -17,6 +17,7 @@ class GProgServerApp(HTTPServerApp):
     VERSION = version
 
     RESOURCES_SEARCH_PATH = ['pybot.youpi2.http', my_package]
+    DISPLAY_REQUESTS_ON_LCD = False
 
     def get_apps(self):
         ui_app = UIApp(arm=self.arm, panel=self.pnl, name='app-ui', log_level=self.log_getEffectiveLevel())

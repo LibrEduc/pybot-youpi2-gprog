@@ -10,11 +10,6 @@ setup(
     packages=find_packages("src"),
     package_dir={'': 'src'},
     package_data={'pybot.youpi2.gprog': [
-        # stylesheets
-        'data/static/css/bootstrap-slate.min.css',
-        'data/static/css/youpi.css',
-        # fonts
-        'data/static/fonts/*.ttf',
         # Javascript
         'data/static/js/*.min.js',
         'data/static/js/*_compressed.js',
@@ -22,7 +17,6 @@ setup(
         'data/static/js/fr.js',
         'data/static/js/blocks_youpi.js',
         # data
-        'data/static/js/blocks_youpi.json',
         'data/static/xml/toolbox.xml',
         # graphics
         'data/static/img/*',
@@ -38,7 +32,7 @@ setup(
     description='Youpi2 graphical programming demonstration',
     entry_points={
         'console_scripts': [
-            'youpi2-gprog-server = pybot.youpi2.gprog.webapp:main',
+            'youpi2-gprog-server = pybot.youpi2.gprog.server:main',
         ]
     }
 )

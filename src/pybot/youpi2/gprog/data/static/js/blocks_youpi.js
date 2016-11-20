@@ -1,6 +1,7 @@
 /**
- * Created by eric on 02/11/16.
+ * Youpi blocks for Blockly
  */
+
 var joint_names = ['BASE', 'SHOULDER', 'ELBOW', 'WRIST', 'HAND'];
 var joints_count = joint_names.length;
 
@@ -244,15 +245,104 @@ Blockly.Blocks['move_at'] = {
 };
 
 Blockly.Python['move_at'] = function (block) {
-    var x = Blockly.Python.valueToCode(block, 'X', Blockly.Python.ORDER_ATOMIC);
-    var y = Blockly.Python.valueToCode(block, 'Y', Blockly.Python.ORDER_ATOMIC);
-    var z = Blockly.Python.valueToCode(block, 'Z', Blockly.Python.ORDER_ATOMIC);
-    var pitch = Blockly.Python.valueToCode(block, 'PITCH', Blockly.Python.ORDER_ATOMIC);
+    var x = Blockly.Python.valueToCode(block, 'X', Blockly.Python.ORDER_ATOMIC) || '0';
+    var y = Blockly.Python.valueToCode(block, 'Y', Blockly.Python.ORDER_ATOMIC) || '0';
+    var z = Blockly.Python.valueToCode(block, 'Z', Blockly.Python.ORDER_ATOMIC) || '0';
+    var pitch = Blockly.Python.valueToCode(block, 'PITCH', Blockly.Python.ORDER_ATOMIC) || '0';
 
-    return 'arm.move_gripper_at(' +
-        (x != '' ? x : '0') + ', ' +
-        (y != '' ? y : '0') + ', ' +
-        (z != '' ? z : '0') + ', ' +
-        (pitch != '' ? pitch : '0') + ')\n';
+    return 'arm.move_gripper_at(' + x + ', ' + y + ', ' + z + ', ' + pitch + ')\n';
 };
 
+Blockly.Blocks['pnl_write_at'] = {
+    init: function () {
+        initialize_block(this, 'afficher', 'pnl_write_at');
+
+        this.appendValueInput('TEXT')
+            .setCheck('String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('texte');
+        this.appendValueInput('LINE')
+            .setCheck('Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('ligne');
+        this.appendValueInput('COL')
+            .setCheck('Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('colonne');
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Python['pnl_write_at'] = function (block) {
+    var text = Blockly.Python.valueToCode(block, 'TEXT', Blockly.Python.ORDER_ATOMIC);
+    var line = Blockly.Python.valueToCode(block, 'LINE', Blockly.Python.ORDER_ATOMIC) || '1';
+    var col = Blockly.Python.valueToCode(block, 'COL', Blockly.Python.ORDER_ATOMIC) || '1';
+
+    return 'panel.write_at(' + text + '[:21-' + col + '], line=' + line + ', col=' + col + ')\n';
+};
+
+Blockly.Blocks['pnl_center_text'] = {
+    init: function () {
+        initialize_block(this, 'centrer', 'pnl_center_text');
+
+        this.appendValueInput('TEXT')
+            .setCheck('String')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('texte');
+        this.appendValueInput('LINE')
+            .setCheck('Number')
+            .setAlign(Blockly.ALIGN_RIGHT)
+            .appendField('ligne');
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Python['pnl_center_text'] = function (block) {
+    var text = Blockly.Python.valueToCode(block, 'TEXT', Blockly.Python.ORDER_ATOMIC);
+    var line = Blockly.Python.valueToCode(block, 'LINE', Blockly.Python.ORDER_ATOMIC) || '1';
+
+    return 'panel.center_text_at(' + text + '[:20], line=' + line + ')\n';
+};
+
+Blockly.Blocks['pnl_clear'] = {
+    init: function () {
+        initialize_block(this, 'effacer affichage', 'pnl_clear');
+    }
+};
+
+Blockly.Python['pnl_clear'] = function (block) {
+    return 'panel.clear()\n'
+};
+
+Blockly.Blocks['leds_on'] = {
+    init: function () {
+        initialize_block(this, 'allumer LEDs', 'leds_on');
+        for (var i = 1; i < 5; i++) {
+            this.appendValueInput('LED' + i)
+                .setCheck('Boolean')
+                .setAlign(Blockly.ALIGN_RIGHT)
+                .appendField(i.toString());
+        }
+        this.setInputsInline(true);
+    }
+};
+
+Blockly.Python['leds_on'] = function (block) {
+    var code = "leds = set()\n";
+    for (var i = 1 ; i < 5 ; i++) {
+        var state_eval = Blockly.Python.valueToCode(block, 'LED' + i, Blockly.Python.ORDER_ATOMIC);
+        code += "if " + state_eval + ": leds.add(" + i + ")\n";
+    }
+    code += "panel.set_leds(leds)\n";
+    return code;
+};
+
+Blockly.Blocks['leds_all_off'] = {
+    init: function () {
+        initialize_block(this, 'éteindre les LEDs', 'leds_all_off');
+    }
+};
+
+Blockly.Python['leds_all_off'] = function (block) {
+    return 'panel.leds_off()\n'
+};
