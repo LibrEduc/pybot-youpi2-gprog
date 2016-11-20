@@ -11,11 +11,7 @@ setup(
     package_dir={'': 'src'},
     package_data={'pybot.youpi2.gprog': [
         # Javascript
-        'data/static/js/*.min.js',
-        'data/static/js/*_compressed.js',
-        'data/static/js/python_compressed.js',
-        'data/static/js/fr.js',
-        'data/static/js/blocks_youpi.js',
+        'data/static/js/*.js',
         # data
         'data/static/xml/toolbox.xml',
         # graphics
