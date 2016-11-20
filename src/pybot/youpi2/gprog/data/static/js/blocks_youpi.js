@@ -12,15 +12,18 @@ Blockly.Python.INDENT = '    ';
  * @param block the block to be initialized
  * @param title the block title
  * @param help_topic the path of the help page
+ * @param tooltip optional tooltip text
  */
-function initialize_block(block, title, help_topic) {
+function initialize_block(block, title, help_topic, tooltip) {
     block.appendDummyInput()
         .appendField(title);
     block.setColour(65);
     block.setPreviousStatement(true);
     block.setNextStatement(true);
     if (help_topic)
-        block.setHelpUrl("/help/" + help_topic);
+        block.setHelpUrl("/help#" + help_topic);
+    if (tooltip)
+        block.setToolTip(tooltip);
     block.data = 'youpi';
 }
 
@@ -29,9 +32,10 @@ function initialize_block(block, title, help_topic) {
  * @param block the block to be initialized
  * @param title the block title
  * @param help_topic the path of the help page
+ * @param tooltip optional tooltip text
  */
-function initialize_pose_block(block, title, help_topic) {
-    initialize_block(block, title, help_topic);
+function initialize_pose_block(block, title, help_topic, tooltip) {
+    initialize_block(block, title, help_topic, tooltip);
 
     block.appendValueInput('BASE')
         .setCheck('Number')
@@ -60,7 +64,9 @@ function initialize_pose_block(block, title, help_topic) {
  */
 Blockly.Blocks['set_pose'] = {
     init: function () {
-        initialize_pose_block(this, 'prendre la pose', 'set_pose');
+        initialize_pose_block(this, 'prendre la pose', 'set_pose',
+            "définit la nouvelle position du bras par les angles de ses articulations"
+        );
     }
 };
 
@@ -98,7 +104,9 @@ Blockly.Python['set_pose'] = function (block) {
  */
 Blockly.Blocks['move_pose'] = {
     init: function () {
-        initialize_pose_block(this, 'modifier la pose', 'move_pose');
+        initialize_pose_block(this, 'modifier la pose', 'move_pose',
+            "déplace la position du bras par rapport aux angles actuels de ses articulations"
+        );
     }
 };
 
@@ -136,10 +144,11 @@ Blockly.Python['move_pose'] = function (block) {
  * @param block the block to be initialized
  * @param title the block title
  * @param label the label between inputs
-* @param help_topic the path of the help page
-  */
-function initialize_joint_position_block(block, title, label, help_topic){
-    initialize_block(block, title, help_topic);
+ * @param help_topic the path of the help page
+ * @param tooltip optional tooltip text
+ */
+function initialize_joint_position_block(block, title, label, help_topic, tooltip){
+    initialize_block(block, title, help_topic, tooltip);
 
     block.appendDummyInput()
         .appendField(new Blockly.FieldDropdown([
@@ -162,7 +171,9 @@ function initialize_joint_position_block(block, title, label, help_topic){
 
 Blockly.Blocks['set_joint_position'] = {
     init: function () {
-        initialize_joint_position_block(this, 'déplacer', 'à la position', 'set_joint_position');
+        initialize_joint_position_block(this, 'déplacer', 'à la position', 'set_joint_position',
+            "modifie l'angle d'une articulation"
+        );
     }
 };
 
@@ -179,7 +190,9 @@ Blockly.Python['set_joint_position'] = function (block) {
 
 Blockly.Blocks['move_joint_position'] = {
     init: function () {
-        initialize_joint_position_block(this, 'déplacer', 'de', 'move_joint_position');
+        initialize_joint_position_block(this, 'déplacer', 'de', 'move_joint_position',
+            "déplace une articulation d'un certain angle"
+        );
     }
 };
 
@@ -196,7 +209,7 @@ Blockly.Python['move_joint_position'] = function (block) {
 
 Blockly.Blocks['open_gripper'] = {
     init: function () {
-        initialize_block(this, 'ouvrir la pince', 'open_gripper');
+        initialize_block(this, 'ouvrir la pince', 'open_gripper', 'ouvre la pince');
     }
 };
 
@@ -206,7 +219,7 @@ Blockly.Python['open_gripper'] = function (block) {
 
 Blockly.Blocks['close_gripper'] = {
     init: function () {
-        initialize_block(this, 'fermer la pince', 'close_gripper');
+        initialize_block(this, 'fermer la pince', 'close_gripper', 'ferme la pince');
     }
 };
 
@@ -216,7 +229,7 @@ Blockly.Python['close_gripper'] = function (block) {
 
 Blockly.Blocks['go_home'] = {
     init: function () {
-        initialize_block(this, 'retour origine', 'go_home');
+        initialize_block(this, 'retour origine', 'go_home', 'remet le bras à sa position par défaut');
     }
 };
 
@@ -226,7 +239,9 @@ Blockly.Python['go_home'] = function (block) {
 
 Blockly.Blocks['move_at'] = {
     init: function () {
-        initialize_block(this, 'déplacer la pince à', 'move_at');
+        initialize_block(this, 'déplacer la pince à', 'move_at',
+            "déplace l'extrémité de la pince à une position donnée dans l'espace"
+        );
 
         var coords = ['X', 'Y', 'Z'];
         for (var i = 0; i < coords.length; i++) {
@@ -255,7 +270,9 @@ Blockly.Python['move_at'] = function (block) {
 
 Blockly.Blocks['pnl_write_at'] = {
     init: function () {
-        initialize_block(this, 'afficher', 'pnl_write_at');
+        initialize_block(this, 'afficher', 'pnl_write_at',
+            "affiche un texte à une position donnée sur le LCD"
+        );
 
         this.appendValueInput('TEXT')
             .setCheck('String')
@@ -283,7 +300,9 @@ Blockly.Python['pnl_write_at'] = function (block) {
 
 Blockly.Blocks['pnl_center_text'] = {
     init: function () {
-        initialize_block(this, 'centrer', 'pnl_center_text');
+        initialize_block(this, 'centrer', 'pnl_center_text',
+            "affiche un texte sur le LCD, centré sur une ligne spécifique"
+        );
 
         this.appendValueInput('TEXT')
             .setCheck('String')
@@ -306,7 +325,7 @@ Blockly.Python['pnl_center_text'] = function (block) {
 
 Blockly.Blocks['pnl_clear'] = {
     init: function () {
-        initialize_block(this, 'effacer affichage', 'pnl_clear');
+        initialize_block(this, 'effacer affichage', 'pnl_clear', "efface le LCD");
     }
 };
 
@@ -316,7 +335,9 @@ Blockly.Python['pnl_clear'] = function (block) {
 
 Blockly.Blocks['leds_on'] = {
     init: function () {
-        initialize_block(this, 'allumer LEDs', 'leds_on');
+        initialize_block(this, 'allumer LEDs', 'leds_on',
+            "allume des LEDs du panneau de contrôle"
+        );
         for (var i = 1; i < 5; i++) {
             this.appendValueInput('LED' + i)
                 .setCheck('Boolean')
@@ -339,7 +360,9 @@ Blockly.Python['leds_on'] = function (block) {
 
 Blockly.Blocks['leds_all_off'] = {
     init: function () {
-        initialize_block(this, 'éteindre les LEDs', 'leds_all_off');
+        initialize_block(this, 'éteindre les LEDs', 'leds_all_off',
+            "éteint toutes les LEDs du panneau de contrôle"
+        );
     }
 };
 
