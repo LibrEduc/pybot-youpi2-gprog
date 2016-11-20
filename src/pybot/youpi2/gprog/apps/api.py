@@ -62,6 +62,8 @@ class RestAPIApp(YoupiBottleApp):
         if 'import ' in py_code:
             return self._http_error(httplib.BAD_REQUEST, 'unauthorized statement')
 
+        self.panel.center_text_at('Sequence running...', 3)
+
         self.log_info('received code:')
         for line in py_code.split('\n'):
             self.log_info('>>> ' + line)
