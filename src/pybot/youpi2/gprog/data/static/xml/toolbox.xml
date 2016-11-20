@@ -312,101 +312,105 @@
             <field name="DIRECTION">1</field>
         </block>
     </category>
-    <category name="Youpi" colour="65" id="categ_youpi">
-        <block type="set_pose"></block>
-        <block type="move_pose"></block>
-        <block type="set_joint_position">
-            <value name="ANGLE">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="move_joint_position">
-            <value name="ANGLE">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="move_at">
-            <value name="X">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-            <value name="Y">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-            <value name="Z">
-                <shadow type="math_number">
-                    <field name="NUM">0</field>
-                </shadow>
-            </value>
-            <value name="PITCH">
-                <shadow type="math_number">
-                    <field name="NUM">90</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="close_gripper"></block>
-        <block type="open_gripper"></block>
-        <block type="go_home"></block>
-        <block type="pnl_write_at">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT"></field>
-                </shadow>
-            </value>
-            <value name="LINE">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-            <value name="COL">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="pnl_center_text">
-            <value name="TEXT">
-                <shadow type="text">
-                    <field name="TEXT"></field>
-                </shadow>
-            </value>
-            <value name="LINE">
-                <shadow type="math_number">
-                    <field name="NUM">1</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="pnl_clear"></block>
-        <block type="leds_on">
-            <value name="LED1">
-                <shadow type="logic_boolean">
-                    <field name="BOOL">FALSE</field>
-                </shadow>
-            </value>
-            <value name="LED2">
-                <shadow type="logic_boolean">
-                    <field name="BOOL">FALSE</field>
-                </shadow>
-            </value>
-            <value name="LED3">
-                <shadow type="logic_boolean">
-                    <field name="BOOL">FALSE</field>
-                </shadow>
-            </value>
-            <value name="LED4">
-                <shadow type="logic_boolean">
-                    <field name="BOOL">FALSE</field>
-                </shadow>
-            </value>
-        </block>
-        <block type="leds_all_off"></block>
+    <category name="Youpi" colour="65">
+        <category name="Contrôle bras" colour="65">
+            <block type="set_pose"></block>
+            <block type="move_pose"></block>
+            <block type="set_joint_position">
+                <value name="ANGLE">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="move_joint_position">
+                <value name="ANGLE">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="move_at">
+                <value name="X">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="Y">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="Z">
+                    <shadow type="math_number">
+                        <field name="NUM">0</field>
+                    </shadow>
+                </value>
+                <value name="PITCH">
+                    <shadow type="math_number">
+                        <field name="NUM">90</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="close_gripper"></block>
+            <block type="open_gripper"></block>
+            <block type="go_home"></block>
+        </category>
+        <category name="Panneau de contrôle" colour="65">
+            <block type="pnl_write_at">
+                <value name="TEXT">
+                    <shadow type="text">
+                        <field name="TEXT"></field>
+                    </shadow>
+                </value>
+                <value name="LINE">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+                <value name="COL">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="pnl_center_text">
+                <value name="TEXT">
+                    <shadow type="text">
+                        <field name="TEXT"></field>
+                    </shadow>
+                </value>
+                <value name="LINE">
+                    <shadow type="math_number">
+                        <field name="NUM">1</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="pnl_clear"></block>
+            <block type="leds_on">
+                <value name="LED1">
+                    <shadow type="logic_boolean">
+                        <field name="BOOL">FALSE</field>
+                    </shadow>
+                </value>
+                <value name="LED2">
+                    <shadow type="logic_boolean">
+                        <field name="BOOL">FALSE</field>
+                    </shadow>
+                </value>
+                <value name="LED3">
+                    <shadow type="logic_boolean">
+                        <field name="BOOL">FALSE</field>
+                    </shadow>
+                </value>
+                <value name="LED4">
+                    <shadow type="logic_boolean">
+                        <field name="BOOL">FALSE</field>
+                    </shadow>
+                </value>
+            </block>
+            <block type="leds_all_off"></block>
+        </category>
     </category>
     <category name="Variables" colour="330" custom="VARIABLE"></category>
     <category name="Fonctions" colour="290" custom="PROCEDURE"></category>
