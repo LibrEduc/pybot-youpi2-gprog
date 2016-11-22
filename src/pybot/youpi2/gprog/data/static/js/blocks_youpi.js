@@ -105,7 +105,7 @@ Blockly.Python['set_pose'] = function (block) {
 Blockly.Blocks['move_pose'] = {
     init: function () {
         initialize_pose_block(this, 'modifier la pose', 'move_pose',
-            "déplace la position du bras par rapport aux angles actuels de ses articulations"
+            "modifie la position du bras par rapport aux angles actuels de ses articulations"
         );
     }
 };
@@ -169,15 +169,15 @@ function initialize_joint_position_block(block, title, label, help_topic, toolti
     block.setInputsInline(true);
 }
 
-Blockly.Blocks['set_joint_position'] = {
+Blockly.Blocks['set_joint'] = {
     init: function () {
-        initialize_joint_position_block(this, 'déplacer', 'à la position', 'set_joint_position',
-            "modifie l'angle d'une articulation"
+        initialize_joint_position_block(this, 'déplacer', 'à la position', 'set_joint',
+            "définit l'angle d'une articulation"
         );
     }
 };
 
-Blockly.Python['set_joint_position'] = function (block) {
+Blockly.Python['set_joint'] = function (block) {
     var joint_name = block.getFieldValue('JOINT');
     var angle = Blockly.Python.valueToCode(block, 'ANGLE', Blockly.Python.ORDER_ATOMIC);
     if (angle != "") {
@@ -188,15 +188,15 @@ Blockly.Python['set_joint_position'] = function (block) {
 };
 
 
-Blockly.Blocks['move_joint_position'] = {
+Blockly.Blocks['move_joint'] = {
     init: function () {
-        initialize_joint_position_block(this, 'déplacer', 'de', 'move_joint_position',
-            "déplace une articulation d'un certain angle"
+        initialize_joint_position_block(this, 'déplacer', 'de', 'move_joint',
+            "modifie la position d'une articulation d'un certain angle"
         );
     }
 };
 
-Blockly.Python['move_joint_position'] = function (block) {
+Blockly.Python['move_joint'] = function (block) {
     var joint_name = block.getFieldValue('JOINT');
     var angle = Blockly.Python.valueToCode(block, 'ANGLE', Blockly.Python.ORDER_ATOMIC);
     if (angle != "") {
@@ -325,7 +325,7 @@ Blockly.Python['pnl_center_text'] = function (block) {
 
 Blockly.Blocks['pnl_clear'] = {
     init: function () {
-        initialize_block(this, 'effacer affichage', 'pnl_clear', "efface le LCD");
+        initialize_block(this, 'effacer affichage', 'pnl_clear', "efface le contenu du LCD");
     }
 };
 
