@@ -14,6 +14,9 @@ $(function () {
     $completion_modal.modal();
     var completion_status = $("#completion_status");
 
+    var $blockly_div = $("#blocklyDiv");
+    var $page_header = $("#page-header");
+
     function completion_message(status) {
         $("#completion_status").text(status);
         $completion_modal.modal('show');
@@ -155,6 +158,11 @@ $(function () {
             Blockly.Xml.domToWorkspace(xml, workspace);
         });
     }
+
+    $(window).resize(function(){
+        $blockly_div.width($page_header.width() - 20);
+    });
+    $(window).resize();
 
     $("#toolbox-wrapper").load("../static/xml/toolbox.xml", setup_workspace);
 

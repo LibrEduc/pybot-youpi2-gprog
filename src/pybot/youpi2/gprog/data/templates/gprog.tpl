@@ -1,10 +1,10 @@
 % rebase("base.tpl", title="Youpi 2 - Programmation graphique", version=version)
 
-<div class="page-header"><h1>Programmation graphique</h1></div>
+<div id="page-header" class="page-header"><h1>Programmation graphique</h1></div>
 
 <div id="blocklyDiv" class="well"></div>
 
-<div class="row text-center">
+<div id="command-bar" class="row text-center">
     <button id="btn_execute" class="btn btn-command btn-default disabled">Exécuter</button>
     <button id="btn_clear" class="btn btn-command btn-default disabled">Effacer</button>
 </div>
